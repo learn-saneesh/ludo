@@ -44,23 +44,6 @@ play on a circular ring board (13 track cells per player, same rules).
 - **Shot clock** — 30 s per turn; idle players are auto-played.
 - **Customization** — 24 avatars, 3 dice skins (classic / neon / royal).
 
-## Free hosting
-
-The server is a single Node process (in-memory state, no database), so any
-free Node host works. Easiest options:
-
-- **Instant, no signup — tunnel your PC:** run `npm start`, then
-  `npx localtunnel --port 3000` (or `cloudflared tunnel --url http://localhost:3000`
-  / `ngrok http 3000`). Share the printed URL; the game runs off your machine.
-- **Render.com (free tier):** push this folder to a GitHub repo → New →
-  Web Service → connect the repo → Build `npm install`, Start `npm start`.
-  WebSockets work out of the box; the free instance sleeps after ~15 min idle
-  (first visit wakes it, running games are lost on sleep).
-- **Fly.io / Railway / Glitch:** all run `npm start` Node apps with
-  WebSocket support on their free/trial tiers.
-
-Voice chat uses a public STUN server only; on very restrictive networks
-voice may not connect (game + text chat are unaffected).
 
 ## Layout
 
