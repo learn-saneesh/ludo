@@ -575,13 +575,21 @@ $('btn-copy').addEventListener('click', () => {
   navigator.clipboard?.writeText(roomCode || lobby?.code || '');
   toast('Code copied');
 });
-for (const id of ['btn-leave', 'btn-exit']) {
-  $(id).addEventListener('click', () => {
-    leaveVoice();
-    localStorage.removeItem(SESSION_KEY);
-    location.reload();
-  });
+function leaveRoom() {
+  leaveVoice();
+  localStorage.removeItem(SESSION_KEY);
+  location.reload();
 }
+
+for (const id of ['btn-leave', 'btn-exit']) {
+  $(id).addEventListener('click', leaveRoom);
+}
+
+$('btn-leave-game').addEventListener('click', () => {
+  const midGame = game && game.phase !== 'ENDED';
+  if (midGame && !confirm('Leave the game? A bot will take over your seat.')) return;
+  leaveRoom();
+});
 
 const soundBtn = $('btn-sound');
 function paintSoundBtn() { soundBtn.textContent = sound.muted ? '🔇' : '🔊'; }

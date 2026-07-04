@@ -228,6 +228,11 @@ button.mini { padding: 2px 8px; font-size: .85rem; border-radius: 6px; }
   min-height: 56px;
 }
 .room-tag { color: var(--muted); }
+#btn-leave-game {
+  border-color: var(--border);
+  flex: none;
+  white-space: nowrap;
+}
 
 #game-layout {
   display: grid;

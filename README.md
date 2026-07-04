@@ -44,7 +44,7 @@ play on a circular ring board (13 track cells per player, same rules).
 - **Shot clock** — 30 s per turn; idle players are auto-played.
 - **Customization** — 24 avatars, 3 dice skins (classic / neon / royal).
 
-
+ 
 ## Layout
 
 ```
