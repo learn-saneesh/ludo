@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Board debug</title>
+  <style>body{display:flex;gap:20px;background:#1c1a24;padding:20px} svg{width:640px;background:#fff;border-radius:10px}</style>
+</head>
+<body>
+  <svg id="b1"></svg>
+  <svg id="b2"></svg>
+  <script type="module">
+    import { createBoard } from './board.js';
+
+    // Classic 4-player layout with stacks, home column, finished tokens.
+    const classic = {
+      classic: true, ringLen: 52, homePos: 56,
+      starts: { 0: 0, 1: 13, 2: 26, 3: 39 },
+      safe: [0, 13, 26, 39, 8, 21, 34, 47],
+    };
+    const b1 = createBoard(document.getElementById('b1'), classic);
+    b1.drawTokens({
+      0: [-1, 0, 5, 51],       // base, start, track, home column
+      1: [-1, -1, 30, 30],     // 2-stack on one cell
+      2: [17, 17, 17, 56],     // 3-stack + finished
+      3: [43, 43, 43, 43],     // 4-stack (was the overflow bug)
+    }, [1, 2], 0, () => {});
+
+    // 6-player ring layout.
+    const starts = {}, safe = [];
+    for (let i = 0; i < 6; i++) { starts[i] = 13 * i; safe.push(13 * i, 13 * i + 8); }
+    const ring = { classic: false, ringLen: 78, homePos: 82, starts, safe };
+    const b2 = createBoard(document.getElementById('b2'), ring);
+    b2.drawTokens({
+      0: [-1, 0, 10, 79],
+      1: [-1, -1, 20, 20],
+      2: [40, 40, 40, 82],
+      3: [55, 55, 55, 55],
+      4: [-1, -1, -1, 62],
+      5: [5, 5, 82, 82],
+    }, [1], 0, () => {});
+    document.title = 'ready';
+  </script>
+</body>
+</html>

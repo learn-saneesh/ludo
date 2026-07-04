@@ -1,0 +1,14 @@
+{
+  "name": "ludo-online",
+  "version": "1.0.0",
+  "description": "Online multiplayer Ludo game with WebSocket server",
+  "main": "server/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server/index.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "ws": "^8.21.0"
+  }
+}

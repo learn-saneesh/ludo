@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ludo Online</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎲</text></svg>">
+</head>
+<body>
+  <button id="btn-sound" class="fab" title="Toggle sound">🔊</button>
+  <div id="conn-status" class="hidden"></div>
+  <div id="toasts"></div>
+
+  <!-- Home -->
+  <section id="screen-home" class="screen">
+    <div class="card">
+      <h1>🎲 Ludo Online</h1>
+      <p class="tagline">Classic Ludo with friends — up to 8 players</p>
+      <label class="lbl">Your avatar</label>
+      <div id="avatar-pick" class="avatar-grid"></div>
+      <input id="name" maxlength="16" placeholder="Your name" autocomplete="nickname">
+      <label class="lbl">Dice style</label>
+      <div id="dice-style" class="chip-row"></div>
+      <button id="btn-create" class="primary">Create Room</button>
+      <div class="divider"><span>or join a room</span></div>
+      <div class="row">
+        <input id="join-code" maxlength="6" placeholder="CODE" class="code-input">
+        <button id="btn-join">Join</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lobby -->
+  <section id="screen-lobby" class="screen hidden">
+    <div class="card">
+      <h2>Room <span id="lobby-code" class="code"></span>
+        <button id="btn-copy" class="mini" title="Copy code">📋</button>
+      </h2>
+      <ul id="lobby-players" class="player-list"></ul>
+      <p id="lobby-hint" class="hint"></p>
+      <div class="row">
+        <button id="btn-add-bot">+ Add Bot</button>
+        <button id="btn-start" class="primary">Start Game</button>
+      </div>
+      <div class="voice-bar" data-voice></div>
+      <div class="chat">
+        <div class="chat-msgs" data-chat></div>
+        <form class="chat-form row">
+          <input maxlength="200" placeholder="Say hi…" autocomplete="off">
+          <button type="submit" class="chat-send">➤</button>
+        </form>
+      </div>
+      <button id="btn-leave" class="ghost">Leave room</button>
+    </div>
+  </section>
+
+  <!-- Game -->
+  <section id="screen-game" class="screen hidden">
+    <div id="game-shell">
+      <header id="game-top">
+        <span class="room-tag">Room <b id="game-code" class="code"></b></span>
+        <div class="voice-bar" data-voice></div>
+      </header>
+      <div id="game-layout">
+        <div id="board-wrap">
+          <svg id="board"></svg>
+        </div>
+        <aside id="side">
+          <ul id="game-players" class="player-list"></ul>
+          <div id="dice-area">
+            <div id="die" class="die style-classic" title="Roll"></div>
+            <div id="dice-right">
+              <button id="btn-roll" class="primary hidden">Roll</button>
+              <p id="turn-hint" class="hint"></p>
+              <div id="timer-track"><div id="timer-bar"></div></div>
+            </div>
+          </div>
+          <div class="chat">
+            <div class="chat-msgs" data-chat></div>
+            <form class="chat-form row">
+              <input maxlength="200" placeholder="Message…" autocomplete="off">
+              <button type="submit" class="chat-send">➤</button>
+            </form>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <div id="overlay" class="hidden">
+      <div class="card">
+        <h2>🏁 Results</h2>
+        <ul id="rankings" class="player-list"></ul>
+        <div class="row">
+          <button id="btn-again" class="primary hidden">Play Again</button>
+          <button id="btn-exit" class="ghost">Exit</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script type="module" src="client.js"></script>
+</body>
+</html>
